@@ -1,3 +1,6 @@
+-- SQL 문제 직접 만들고 해결하기
+-- 2021/01/26 과제
+
 --1. SYSDATE를 기준으로 만 65세가 된 교수는 정년퇴임 명단에 넣고자 한다. 
 --대상자들을 찾는 적절한 SQL 구문을 작성하시오.
 SELECT 
@@ -95,8 +98,9 @@ AND VP.교수이름 LIKE '전%'
 AND VP.성별 = VP.성별 ;
 
 
---2040년 동기 엠티를 가고자 한다. 
---환갑이 넘은 동문들을 위해 ‘서울’에 사는 동문들을 대상으로 버스 대절 인원 명단을 만들려고 한다.
+-- 5. 2040년 동기 엠티를 가고자 한다. 
+-- 환갑이 넘은 동문들을 위해 ‘서울’에 사는 동문들을 대상으로 
+-- 버스 대절 인원 명단을 만들려고 한다.
 CREATE TABLE TB_BUS
 (
   NAME VARCHAR2(10)
@@ -106,7 +110,7 @@ CREATE TABLE TB_BUS
 , ADDRESS VARCHAR2(200)
 );
 
-
+-- 대상자 조회하여 행 추가하기
 INSERT INTO TB_BUS
 SELECT  
         S.STUDENT_NAME
@@ -119,14 +123,12 @@ SELECT
   WHERE FLOOR(MONTHS_BETWEEN(TO_DATE('400101', 'YYMMDD'), TO_DATE(SUBSTR(STUDENT_SSN, 1, 6), 'RRMMDD')) / 12) >= 60
   AND S.STUDENT_ADDRESS LIKE '서울%';
 
+-- 호텔관광학과는 폐과되어 명단에서 제거
 DELETE TB_BUS
 WHERE NAME IN (SELECT S.STUDENT_NAME
                 FROM TB_STUDENT S
                 JOIN TB_DEPARTMENT D ON (S.DEPARTMENT_NO= D.DEPARTMENT_NO)
                 WHERE D.DEPARTMENT_NAME = '호텔관광학과');
-
-ALTER TABLE TB_BUS
-ADD(ROOM CHAR(1));
 
 ROLLBACK;
  
