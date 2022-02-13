@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <title>[실습3]폼 관련 태그 실습</title>
+    <!-- 2022/02/09 과제-->
+</head>
+<body>
+<form>
+    <label>고객명 : </label>
+    <input type="text" name="name"><br><br>
+
+    <label>전화번호 : </label>
+    <input type="tel" name="phone"><br><br>
+
+    <label>E-mail : </label>
+    <input type="email" name="email"><br><br>
+
+    <label>피자 선택 : </label>
+    <select name="pizza">
+        <option selected disabled>피자를 선택하세요</option>
+        <option value="co">콤비네이션</option>
+        <option value="pe">페퍼로니</option>
+        <option value="po">포테이토</option>
+    </select>
+
+    <fieldset>
+        <legend>피자 사이즈</legend>
+        <input type="radio" id="small" name="size" value="S" checked>
+        <label for="small">Small</label><br><br>
+        <input type="radio" id="medium" name="size" value="M">
+        <label for="medium">Medium</label><br><br>
+        <input type="radio" id="large" name="size" value="L">
+        <label for="large">Large</label><br><br>
+    </fieldset>
+    <br>
+
+    <fieldset>
+        <legend>토핑 선택</legend>
+        <input type="checkbox" id="bacon" name="topping" value="bacon">
+        <label for="bacon">베이컨</label><br><br>
+        <input type="checkbox" id="cheese" name="topping" value="cheese">
+        <label for="cheese">치즈</label><br><br>
+        <input type="checkbox" id="onion" name="topping" value="onion">
+        <label for="onion">양파</label><br><br>
+        <input type="checkbox" id="mushroom" name="topping" value="mushroom">
+        <label for="mushroom">버섯</label><br><br>
+    </fieldset>
+    <br>
+
+    <label for>희망 배송 시간 : </label>
+    <input type="time" name="time">
+    <br><br>
+    <label>배송 시 요청 사항 : </label>
+    <textarea cols="20" rows="3"></textarea>
+    <br><br>
+
+    <input type="submit" value="주문하기">
+
+</form>
+
+</body>
+</html>
